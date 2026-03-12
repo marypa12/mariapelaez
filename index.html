@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buzón CUC Escucha</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#93c5fd,#60a5fa);
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:30px;
+}
+
+.contenedor{
+width:100%;
+max-width:700px;
+background:white;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,0.12);
+padding:35px;
+}
+
+.encabezado{
+text-align:center;
+margin-bottom:25px;
+}
+
+.encabezado h1{
+color:#0f172a;
+margin-bottom:10px;
+font-size:2rem;
+}
+
+.encabezado p{
+color:#475569;
+font-size:1rem;
+line-height:1.5;
+}
+
+form{
+display:grid;
+gap:18px;
+}
+
+.grupo{
+display:flex;
+flex-direction:column;
+}
+
+label{
+margin-bottom:8px;
+font-weight:bold;
+color:#1e293b;
+}
+
+input,
+select,
+textarea{
+padding:12px;
+border:1px solid #cbd5e1;
+border-radius:10px;
+font-size:1rem;
+outline:none;
+transition:0.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+border-color:#2563eb;
+box-shadow:0 0 0 3px rgba(37,99,235,0.15);
+}
+
+textarea{
+resize:vertical;
+min-height:130px;
+}
+
+.fila{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+button{
+background:#2563eb;
+color:white;
+border:none;
+padding:14px;
+border-radius:10px;
+font-size:1rem;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+.mensaje-exito{
+margin-top:20px;
+padding:14px;
+background:#dcfce7;
+color:#166534;
+border:1px solid #86efac;
+border-radius:10px;
+display:none;
+text-align:center;
+font-weight:bold;
+}
+
+.pie{
+margin-top:25px;
+text-align:center;
+color:#64748b;
+font-size:0.9rem;
+}
+
+@media(max-width:700px){
+.fila{
+grid-template-columns:1fr;
+}
+
+.contenedor{
+padding:25px 20px;
+}
+
+.encabezado h1{
+font-size:1.7rem;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="contenedor">
+
+<div class="encabezado">
+<h1>Buzón CUC Escucha</h1>
+
+<p>
+Comparte tus sugerencias para mejorar la experiencia estudiantil
+en la Facultad de Ingeniería: bienestar, servicios, clases,
+inclusión y más.
+</p>
+
+</div>
+
+
+<form id="formulario-buzon">
+
+<div class="grupo">
+<label for="nombre">Nombre completo</label>
+<input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre completo" required>
+</div>
+
+
+<div class="fila">
+
+<div class="grupo">
+<label for="correo">Correo institucional</label>
+<input type="email" id="correo" name="correo" placeholder="ejemplo@cuc.edu.co" required>
+</div>
+
+<div class="grupo">
+<label for="programa">Programa académico</label>
+<input type="text" id="programa" name="programa" placeholder="Ing. de Sistemas" required>
+</div>
+
+</div>
+
+
+<div class="fila">
+
+<div class="grupo">
+<label for="semestre">Semestre</label>
+<input type="number" id="semestre" name="semestre" placeholder="Ej: 4" min="1" max="12" required>
+</div>
+
+<div class="grupo">
+<label for="categoria">Categoría de la sugerencia</label>
+
+<select id="categoria" name="categoria" required>
+
+<option value="">Selecciona una opción</option>
+<option>Bienestar</option>
+<option>Servicios</option>
+<option>Clases</option>
+<option>Inclusión</option>
+<option>Infraestructura</option>
+<option>Otro</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<div class="grupo">
+<label for="telefono">Teléfono</label>
+<input type="text" id="telefono" name="telefono" placeholder="Escribe tu número">
+</div>
+
+
+<div class="grupo">
+<label for="mensaje">Mensaje</label>
+
+<textarea
+id="mensaje"
+name="mensaje"
+placeholder="Escribe aquí tu sugerencia..."
+required>
+</textarea>
+
+</div>
+
+
+<button type="submit">Enviar sugerencia</button>
+
+</form>
+
+
+<div class="mensaje-exito" id="mensajeExito">
+Tu sugerencia fue enviada correctamente.
+</div>
+
+
+<div class="pie">
+Universidad de la Costa - CUC
+</div>
+
+</div>
+
+
+<script>
+
+const formulario=document.getElementById("formulario-buzon")
+const mensajeExito=document.getElementById("mensajeExito")
+
+formulario.addEventListener("submit",function(e){
+
+e.preventDefault()
+
+mensajeExito.style.display="block"
+
+formulario.reset()
+
+})
+
+</script>
+
+</body>
+</html>
